@@ -7,7 +7,7 @@
         margin-bottom: 25px;
     }
     td {
-        alignment: center;
+        text-align: center;
         height: 50px;
         width: 50px;
     }
@@ -16,61 +16,31 @@
     }
 </style>
 
-
 <script>
 
-    function viewDOM() {
-        var theDOM = document.getElementsByTagName("html");
-        console.log(theDOM);
-    }
+    var counterCol = [0, 0, 0, 0, 0, 0, 0]; 
+    var baseColor = 0;
 
-    function playerName1(e) {
-        if (e.keyCode === 13) {
-            var playerName = document.getElementById("playerName1").value;
-            console.log(playerName);
-            document.getElementById("playerName1Filled").innerHTML=playerName;
-        }
-    }
-
-    function getMark(mark) {
-        var name = document.getElementById("name").value;
-        if (mark == 5) {
-            document.getElementById("resultColor").style.backgroundColor = 'red';
-        }
-        else if (mark == 6) {
-            document.getElementById("resultColor").style.backgroundColor = 'orange';
-        }
-        else if (mark == 7) {
-            document.getElementById("resultColor").style.backgroundColor = 'lightgreen';
-        }
-        else if (mark == 8) {
-            document.getElementById("resultColor").style.backgroundColor = 'darkgreen';
-            
-        }
-        document.getElementById("results").innerHTML = name + " has a " + mark;
-    }
-
-    var countColouredCells = 0;
-
-    function changeTableCell(cellID) {
-        if (document.getElementById(cellID).style.backgroundColor == 'red' || document.getElementById(cellID).style.backgroundColor == 'blue') {
-            document.getElementById(cellID).style.backgroundColor = 'white';
-            countColouredCells -= 1;
-
-        } else if (countColouredCells % 2 == 0) {
-            document.getElementById(cellID).style.backgroundColor = 'red';
-            countColouredCells += 1;
+    function changeTableCell(col) {
+        var color;
+        if (baseColor == 0) {
+            color = 'yellow';
+            baseColor = 1;
         } else {
-            document.getElementById(cellID).style.backgroundColor = 'blue';
-            countColouredCells += 1;
+            color = 'red';
+            baseColor = 0;
         }
-        console.log(cellID);
-        
-        console.log(countColouredCells);
+        document.getElementById("vakje" + col + "" + counterCol[col]).style.backgroundColor = color;
+        counterCol[col]++;
     }
 
 
-
+    function createPlayerName(playerNumber) {
+        console.log(playerNumber);
+        var playerName = document.getElementById("playerName" + playerNumber).value;
+        console.log(playerName);
+        document.getElementById("playerName" + playerNumber + "Filled").innerHTML = playerName;
+    }
 </script>
 
 <html lang="en">
@@ -78,85 +48,73 @@
     <meta charset="UTF-8">
     <title>4 In A Row</title>
 </head>
-
 <body>
 
-    <input id="name" type="text"/>
-    <input type="button" value="5" onclick="getMark(5)" />
-    <input type="button" value="6" onclick="getMark(6)" />
-    <input type="button" value="7" onclick="getMark(7)" />
-    <input type="button" value="8" onclick="getMark(8)" />
+    <input type="text" id="playerName1" placeholder="Player 1"/>
+    <input type="button" onclick="createPlayerName(1)" value="Confirm" />
 
-    <div id="resultColor">
-        <p id="results"></p>
-    </div>
+    <input type="text" id="playerName2" placeholder="Player 2"/>
+    <input type="button" onclick="createPlayerName(2)" value="Confirm" />
 
-    <table id="playField">
-        <tr id="row1">
-            <td id="1,1" onclick="changeTableCell(this.id)"></td>
-            <td id="1,2" onclick="changeTableCell(this.id)"></td>
-            <td id="1,3" onclick="changeTableCell(this.id)"></td>
-            <td id="1,4" onclick="changeTableCell(this.id)"></td>
-            <td id="1,5" onclick="changeTableCell(this.id)"></td>
-            <td id="1,6" onclick="changeTableCell(this.id)"></td>
-            <td id="1,7" onclick="changeTableCell(this.id)"></td>
+    <h3 id="playerName1Filled"></h3>
+    <h3 id="playerName2Filled"></h3>
+    <table>
+        <tr>
+            <td id=vakje05 onclick=changeTableCell(0)>X</td>
+            <td id=vakje15 onclick=changeTableCell(1)>X</td>
+            <td id=vakje25 onclick=changeTableCell(2)>X</td>
+            <td id=vakje35 onclick=changeTableCell(3)>X</td>
+            <td id=vakje45 onclick=changeTableCell(4)>X</td>
+            <td id=vakje55 onclick=changeTableCell(5)>X</td>
+            <td id=vakje65 onclick=changeTableCell(6)>X</td>
         </tr>
-        <tr id="row2">
-            <td id="2,1" onclick="changeTableCell(this.id)"></td>
-            <td id="2,2" onclick="changeTableCell(this.id)"></td>
-            <td id="2,3" onclick="changeTableCell(this.id)"></td>
-            <td id="2,4" onclick="changeTableCell(this.id)"></td>
-            <td id="2,5" onclick="changeTableCell(this.id)"></td>
-            <td id="2,6" onclick="changeTableCell(this.id)"></td>
-            <td id="2,7" onclick="changeTableCell(this.id)"></td>
+        <tr>
+            <td id=vakje04 onclick=changeTableCell(0)>X</td>
+            <td id=vakje14 onclick=changeTableCell(1)>X</td>
+            <td id=vakje24 onclick=changeTableCell(2)>X</td>
+            <td id=vakje34 onclick=changeTableCell(3)>X</td>
+            <td id=vakje44 onclick=changeTableCell(4)>X</td>
+            <td id=vakje54 onclick=changeTableCell(5)>X</td>
+            <td id=vakje64 onclick=changeTableCell(6)>X</td>
         </tr>
-        <tr id="row3">
-            <td id="3,1" onclick="changeTableCell(this.id)"></td>
-            <td id="3,2" onclick="changeTableCell(this.id)"></td>
-            <td id="3,3" onclick="changeTableCell(this.id)"></td>
-            <td id="3,4" onclick="changeTableCell(this.id)"></td>
-            <td id="3,5" onclick="changeTableCell(this.id)"></td>
-            <td id="3,6" onclick="changeTableCell(this.id)"></td>
-            <td id="3,7" onclick="changeTableCell(this.id)"></td>
+        <tr>
+            <td id=vakje03 onclick=changeTableCell(0)>X</td>
+            <td id=vakje13 onclick=changeTableCell(1)>X</td>
+            <td id=vakje23 onclick=changeTableCell(2)>X</td>
+            <td id=vakje33 onclick=changeTableCell(3)>X</td>
+            <td id=vakje43 onclick=changeTableCell(4)>X</td>
+            <td id=vakje53 onclick=changeTableCell(5)>X</td>
+            <td id=vakje63 onclick=changeTableCell(6)>X</td>
         </tr>
-        <tr id="row4">
-            <td id="4,1" onclick="changeTableCell(this.id)"></td>
-            <td id="4,2" onclick="changeTableCell(this.id)"></td>
-            <td id="4,3" onclick="changeTableCell(this.id)"></td>
-            <td id="4,4" onclick="changeTableCell(this.id)"></td>
-            <td id="4,5" onclick="changeTableCell(this.id)"></td>
-            <td id="4,6" onclick="changeTableCell(this.id)"></td>
-            <td id="4,7" onclick="changeTableCell(this.id)"></td>
+        <tr>
+            <td id=vakje02 onclick=changeTableCell(0)>X</td>
+            <td id=vakje12 onclick=changeTableCell(1)>X</td>
+            <td id=vakje22 onclick=changeTableCell(2)>X</td>
+            <td id=vakje32 onclick=changeTableCell(3)>X</td>
+            <td id=vakje42 onclick=changeTableCell(4)>X</td>
+            <td id=vakje52 onclick=changeTableCell(5)>X</td>
+            <td id=vakje62 onclick=changeTableCell(6)>X</td>
         </tr>
-        <tr id="row5">
-            <td id="5,1" onclick="changeTableCell(this.id)"></td>
-            <td id="5,2" onclick="changeTableCell(this.id)"></td>
-            <td id="5,3" onclick="changeTableCell(this.id)"></td>
-            <td id="5,4" onclick="changeTableCell(this.id)"></td>
-            <td id="5,5" onclick="changeTableCell(this.id)"></td>
-            <td id="5,6" onclick="changeTableCell(this.id)"></td>
-            <td id="5,7" onclick="changeTableCell(this.id)"></td>
+        <tr>
+            <td id=vakje01 onclick=changeTableCell(0)>X</td>
+            <td id=vakje11 onclick=changeTableCell(1)>X</td>
+            <td id=vakje21 onclick=changeTableCell(2)>X</td>
+            <td id=vakje31 onclick=changeTableCell(3)>X</td>
+            <td id=vakje41 onclick=changeTableCell(4)>X</td>
+            <td id=vakje51 onclick=changeTableCell(5)>X</td>
+            <td id=vakje61 onclick=changeTableCell(6)>X</td>
         </tr>
-        <tr id="row6">
-            <td id="6,1" onclick="changeTableCell(this.id)"></td>
-            <td id="6,2" onclick="changeTableCell(this.id)"></td>
-            <td id="6,3" onclick="changeTableCell(this.id)"></td>
-            <td id="6,4" onclick="changeTableCell(this.id)"></td>
-            <td id="6,5" onclick="changeTableCell(this.id)"></td>
-            <td id="6,6" onclick="changeTableCell(this.id)"></td>
-            <td id="6,7" onclick="changeTableCell(this.id)"></td>
+        <tr>
+            <td id=vakje00 onclick=changeTableCell(0)>X</td>
+            <td id=vakje10 onclick=changeTableCell(1)>X</td>
+            <td id=vakje20 onclick=changeTableCell(2)>X</td>
+            <td id=vakje30 onclick=changeTableCell(3)>X</td>
+            <td id=vakje40 onclick=changeTableCell(4)>X</td>
+            <td id=vakje50 onclick=changeTableCell(5)>X</td>
+            <td id=vakje60 onclick=changeTableCell(6)>X</td>
         </tr>
-        <tr id="row7">
-            <td id="7,1" onclick="changeTableCell(this.id)"></td>
-            <td id="7,2" onclick="changeTableCell(this.id)"></td>
-            <td id="7,3" onclick="changeTableCell(this.id)"></td>
-            <td id="7,4" onclick="changeTableCell(this.id)"></td>
-            <td id="7,5" onclick="changeTableCell(this.id)"></td>
-            <td id="7,6" onclick="changeTableCell(this.id)"></td>
-            <td id="7,7" onclick="changeTableCell(this.id)"></td>
-        </tr>
-    </table>
 
-    <button class="reload" onclick="window.location.reload();">Retry</button>
+
+        <button class="reload" onclick="window.location.reload();">Retry</button>
 </body>
 </html>
