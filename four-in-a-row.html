@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4 In A Row</title>
+</head>
+<style>
+    table, th, td {
+        border: 0.5px solid black;
+        border-collapse: collapse;
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+    td {
+        alignment: center;
+        height: 50px;
+        width: 50px;
+    }
+    td:hover {
+        background-color: lightgreen;
+    }
+</style>
+<script>
+    function playerName1(e) {
+        if (e.keyCode === 13) {
+            var playerName = document.getElementById("playerName1").value;
+            document.getElementById("playerName1Filled").innerHTML=playerName;
+        }
+    }
+</script>
+<body>
+
+    <input id="playerName1" type="text" placeholder="Player Name" onkeyup="playerName1(event)">
+    <input type="button" value="Confirm" onclick="playerName1()">
+
+    <h3 id="playerName1Filled"></h3>
+    <table id="playField">
+        <tr id="row1">
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+        </tr>
+        <tr id="row2">
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+        </tr>
+        <tr id="row3">
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+        </tr>
+        <tr id="row4">
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+        </tr>
+        <tr id="row5">
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+        </tr>
+        <tr id="row6">
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+        </tr>
+        <tr id="row7">
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+            <td onclick="this.style.backgroundColor='red'"></td>
+        </tr>
+    </table>
+
+    <button class="reload" onclick="window.location.reload();">Retry</button>
+</body>
+</html>
