@@ -50,11 +50,26 @@
         document.getElementById("results").innerHTML = name + " has a " + mark;
     }
 
+    var countColouredCells = 0;
 
     function changeTableCell(cellID) {
-        document.getElementById(cellID).style.backgroundColor = 'red';
+        if (document.getElementById(cellID).style.backgroundColor == 'red' || document.getElementById(cellID).style.backgroundColor == 'blue') {
+            document.getElementById(cellID).style.backgroundColor = 'white';
+            countColouredCells -= 1;
+
+        } else if (countColouredCells % 2 == 0) {
+            document.getElementById(cellID).style.backgroundColor = 'red';
+            countColouredCells += 1;
+        } else {
+            document.getElementById(cellID).style.backgroundColor = 'blue';
+            countColouredCells += 1;
+        }
         console.log(cellID);
+        
+        console.log(countColouredCells);
     }
+
+
 
 </script>
 
