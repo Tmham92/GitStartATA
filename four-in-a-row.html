@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>4 In A Row</title>
-</head>
+﻿<!DOCTYPE html>
 <style>
     table, th, td {
-        border: 0.5px solid black;
+        border: 1px solid black;
         border-collapse: collapse;
         margin-top: 25px;
         margin-bottom: 25px;
@@ -20,83 +15,130 @@
         background-color: lightgreen;
     }
 </style>
+
+
 <script>
+
+    function viewDOM() {
+        var theDOM = document.getElementsByTagName("html");
+        console.log(theDOM);
+    }
+
     function playerName1(e) {
         if (e.keyCode === 13) {
             var playerName = document.getElementById("playerName1").value;
+            console.log(playerName);
             document.getElementById("playerName1Filled").innerHTML=playerName;
         }
     }
+
+    function getMark(mark) {
+        var name = document.getElementById("name").value;
+        if (mark == 5) {
+            document.getElementById("resultColor").style.backgroundColor = 'red';
+        }
+        else if (mark == 6) {
+            document.getElementById("resultColor").style.backgroundColor = 'orange';
+        }
+        else if (mark == 7) {
+            document.getElementById("resultColor").style.backgroundColor = 'lightgreen';
+        }
+        else if (mark == 8) {
+            document.getElementById("resultColor").style.backgroundColor = 'darkgreen';
+            
+        }
+        document.getElementById("results").innerHTML = name + " has a " + mark;
+    }
+
+
+    function changeTableCell(cellID) {
+        document.getElementById(cellID).style.backgroundColor = 'red';
+        console.log(cellID);
+    }
+
 </script>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4 In A Row</title>
+</head>
+
 <body>
 
-    <input id="playerName1" type="text" placeholder="Player Name" onkeyup="playerName1(event)">
-    <input type="button" value="Confirm" onclick="playerName1()">
+    <input id="name" type="text"/>
+    <input type="button" value="5" onclick="getMark(5)" />
+    <input type="button" value="6" onclick="getMark(6)" />
+    <input type="button" value="7" onclick="getMark(7)" />
+    <input type="button" value="8" onclick="getMark(8)" />
 
-    <h3 id="playerName1Filled"></h3>
+    <div id="resultColor">
+        <p id="results"></p>
+    </div>
+
     <table id="playField">
         <tr id="row1">
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
+            <td id="1,1" onclick="changeTableCell(this.id)"></td>
+            <td id="1,2" onclick="changeTableCell(this.id)"></td>
+            <td id="1,3" onclick="changeTableCell(this.id)"></td>
+            <td id="1,4" onclick="changeTableCell(this.id)"></td>
+            <td id="1,5" onclick="changeTableCell(this.id)"></td>
+            <td id="1,6" onclick="changeTableCell(this.id)"></td>
+            <td id="1,7" onclick="changeTableCell(this.id)"></td>
         </tr>
         <tr id="row2">
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
+            <td id="2,1" onclick="changeTableCell(this.id)"></td>
+            <td id="2,2" onclick="changeTableCell(this.id)"></td>
+            <td id="2,3" onclick="changeTableCell(this.id)"></td>
+            <td id="2,4" onclick="changeTableCell(this.id)"></td>
+            <td id="2,5" onclick="changeTableCell(this.id)"></td>
+            <td id="2,6" onclick="changeTableCell(this.id)"></td>
+            <td id="2,7" onclick="changeTableCell(this.id)"></td>
         </tr>
         <tr id="row3">
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
+            <td id="3,1" onclick="changeTableCell(this.id)"></td>
+            <td id="3,2" onclick="changeTableCell(this.id)"></td>
+            <td id="3,3" onclick="changeTableCell(this.id)"></td>
+            <td id="3,4" onclick="changeTableCell(this.id)"></td>
+            <td id="3,5" onclick="changeTableCell(this.id)"></td>
+            <td id="3,6" onclick="changeTableCell(this.id)"></td>
+            <td id="3,7" onclick="changeTableCell(this.id)"></td>
         </tr>
         <tr id="row4">
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
+            <td id="4,1" onclick="changeTableCell(this.id)"></td>
+            <td id="4,2" onclick="changeTableCell(this.id)"></td>
+            <td id="4,3" onclick="changeTableCell(this.id)"></td>
+            <td id="4,4" onclick="changeTableCell(this.id)"></td>
+            <td id="4,5" onclick="changeTableCell(this.id)"></td>
+            <td id="4,6" onclick="changeTableCell(this.id)"></td>
+            <td id="4,7" onclick="changeTableCell(this.id)"></td>
         </tr>
         <tr id="row5">
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
+            <td id="5,1" onclick="changeTableCell(this.id)"></td>
+            <td id="5,2" onclick="changeTableCell(this.id)"></td>
+            <td id="5,3" onclick="changeTableCell(this.id)"></td>
+            <td id="5,4" onclick="changeTableCell(this.id)"></td>
+            <td id="5,5" onclick="changeTableCell(this.id)"></td>
+            <td id="5,6" onclick="changeTableCell(this.id)"></td>
+            <td id="5,7" onclick="changeTableCell(this.id)"></td>
         </tr>
         <tr id="row6">
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
+            <td id="6,1" onclick="changeTableCell(this.id)"></td>
+            <td id="6,2" onclick="changeTableCell(this.id)"></td>
+            <td id="6,3" onclick="changeTableCell(this.id)"></td>
+            <td id="6,4" onclick="changeTableCell(this.id)"></td>
+            <td id="6,5" onclick="changeTableCell(this.id)"></td>
+            <td id="6,6" onclick="changeTableCell(this.id)"></td>
+            <td id="6,7" onclick="changeTableCell(this.id)"></td>
         </tr>
         <tr id="row7">
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
-            <td onclick="this.style.backgroundColor='red'"></td>
+            <td id="7,1" onclick="changeTableCell(this.id)"></td>
+            <td id="7,2" onclick="changeTableCell(this.id)"></td>
+            <td id="7,3" onclick="changeTableCell(this.id)"></td>
+            <td id="7,4" onclick="changeTableCell(this.id)"></td>
+            <td id="7,5" onclick="changeTableCell(this.id)"></td>
+            <td id="7,6" onclick="changeTableCell(this.id)"></td>
+            <td id="7,7" onclick="changeTableCell(this.id)"></td>
         </tr>
     </table>
 
