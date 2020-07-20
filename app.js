@@ -2,31 +2,10 @@
 
 var tableRow = document.getElementsByTagName("tr");
 var tableData = document.getElementsByTagName("td");
-var tableCell = document.getElementsByClassName("cell");
+var tableCell = document.querySelectorAll(".cell");
 
 const playerTurn = document.querySelector(".player-turn");
 const reset = document.querySelector(".reset");
-
-//var counterCol = [0, 0, 0, 0, 0, 0, 0];
-//var baseColor = 0;
-
-//function changeTableCell(col) {
-//    var color;
-//    if (baseColor == 0) {
-//    color = 'yellow';
-//        baseColor = 1;
-//    } else {
-//    color = 'red';
-//        baseColor = 0;
-//     }
-//     document.getElementById("vakje" + col + "" + counterCol[col]).style.backgroundColor = color;
-//    counterCol[col]++;
-//}
-
-//function createPlayerName(playerNumber) {
-//    var playerName = document.getElementById("playerName" + playerNumber).value;
-//    document.getElementById("playerName" + playerNumber + "Filled").innerHTML = playerName;
-//}
 
 
 // Function for selector table cell coordinaties (form 0,0 to 5,6)
@@ -52,7 +31,7 @@ player2Color = 'yellow';
 
 var currentPlayer = 1;
 // States player's turn
-playerTurn.textContent = `${player1}'s turn!`;
+playerTurn.textContent = `${player1}'s first turn!`;
 
 Array.prototype.forEach.call(tableData, (cell) => {
     cell.addEventListener('click', changeColor);
@@ -81,9 +60,11 @@ function changeColor(e) {
                 } else if (draw()) {
                     playerTurn.textContent = 'Game is a Draw!';
                     return alert('DRAW');
-                } 
-                playerTurn.texContent = `${player2}'s turn!`;
-                return currentPlayer = 2;
+                } else {
+                    playerTurn.textContent = `${player2}'s turn!`
+                    return currentPlayer = 2;
+                }
+
 
 
 
@@ -98,10 +79,12 @@ function changeColor(e) {
                 } else if (draw()) {
                     playerTurn.textContent = 'Game is a Draw!';
                     return alert('DRAW');
+                } else {
+                    playerTurn.textContent = `${player1}'s turn!`;
+                    return currentPlayer = 1;
                 }
 
-                playerTurn.textContent = `${player1}'s turn!`;
-                return currentPlayer = 1;
+                
             }
         }
     }
@@ -139,6 +122,7 @@ function verticalWin() {
     }
 }
 
+// From bottom left to upper right.
 function diagonalWin() {
     for (let col = 0; col < 4; col++) {
         for (row = 0; row < 3; row++) {
@@ -151,7 +135,7 @@ function diagonalWin() {
         }
     }
 }
-
+ // From bottom right to upper left.
 function diagonalWin2() {
     for (let col = 6; col > 2; col--) {
         for (row = 5; row > 2; row--) {
@@ -178,4 +162,13 @@ function draw() {
         return true;
     }
     return false;
-}
+};
+
+reset.addEventListener('click', () => {
+    tableCell.forEach(gridCell => {
+        gridCell.style.backgroundColor = 'white';
+
+    });
+    playerTurn.style.color = 'black';
+    playerTurn.textContent = `${player1}'s turn!`;
+});

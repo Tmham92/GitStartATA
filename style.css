@@ -31,14 +31,13 @@ h3{
     text-align: center;
 }
 
-.reset{
+.reset {
     position: absolute;
     top: 90vh;
     left: 50%;
     transform: translate(-50%);
-}
-
-.reload{
-    width:3rem;
+    width: 3rem;
     cursor: pointer;
+    border: 1px solid black;
+    text-align: center;
 }
