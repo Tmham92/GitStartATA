@@ -48,7 +48,7 @@ while (!player2) {
     var player2 = prompt("Player Two: ");
 }
 
-player1Color = 'yellow';
+player2Color = 'yellow';
 
 var currentPlayer = 1;
 // States player's turn
@@ -69,8 +69,34 @@ function changeColor(e) {
             row.push(tableRow[i].children[column]);
             if (currentPlayer === 1) {
                 row[0].style.backgroundColor = player1Color;
+                if (horizontalWin()) {
+                    return (alert('Winner!'));
+                }
+                playerTurn.texContent = `${player2}'s turn!`;
+                return currentPlayer = 2;
+            } else {
+                row[0].style.backgroundColor = player2Color;
+                playerTurn.textContent = `${player1}'s turn!`;
+                return currentPlayer = 1;
             }
         }
     }
 }
 
+function checkColorMatch(one, two, three, four) {
+    return (one == two && one == three && one == four && one !== "white");
+}
+
+// check if connecting columns in a row have same colour
+function horizontalWin() {
+    for (let row = 0; row < tableRow.length; row++) {
+        for (let col = 0; col < 4; col++) {
+            if (checkColorMatch(tableRow[row].children[col].style.backgroundColor,
+            tableRow[row].children[col + 1].style.backgroundColor,
+            tableRow[row].children[col + 2].style.backgroundColor,
+            tableRow[row].children[col + 3].style.backgroundColor)) {
+                return true;
+            }
+        }
+    }
+}
