@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.game-grid{
+    position: absolute;
+    top: 4rem;
+    left: 50%;
+    transform: translate(-50%);
+    width: 700px;
+    height: 616px;
+    background: rgb(39, 219, 81);
+    border: 1px solid black;
+}
+
+.cell{
+    width: 100px;
+    height: 100px;
+    background: white;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+h1{
+    text-align: center;
+}
+
+.reset{
+    position: absolute;
+    top: 90vh;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.reload{
+    width:3rem;
+    cursor: pointer;
+}

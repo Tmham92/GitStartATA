@@ -1,120 +1,81 @@
 ﻿<!DOCTYPE html>
-<style>
-    table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-        margin-top: 25px;
-        margin-bottom: 25px;
-    }
-    td {
-        text-align: center;
-        height: 50px;
-        width: 50px;
-    }
-    td:hover {
-        background-color: lightgreen;
-    }
-</style>
 
-<script>
-
-    var counterCol = [0, 0, 0, 0, 0, 0, 0]; 
-    var baseColor = 0;
-
-    function changeTableCell(col) {
-        var color;
-        if (baseColor == 0) {
-            color = 'yellow';
-            baseColor = 1;
-        } else {
-            color = 'red';
-            baseColor = 0;
-        }
-        document.getElementById("vakje" + col + "" + counterCol[col]).style.backgroundColor = color;
-        counterCol[col]++;
-    }
-
-
-    function createPlayerName(playerNumber) {
-        console.log(playerNumber);
-        var playerName = document.getElementById("playerName" + playerNumber).value;
-        console.log(playerName);
-        document.getElementById("playerName" + playerNumber + "Filled").innerHTML = playerName;
-    }
-</script>
-
-<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>4 In A Row</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect 4</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
+<html>
 <body>
+    <h1>Connect Four</h1>
 
-    <input type="text" id="playerName1" placeholder="Player 1"/>
-    <input type="button" onclick="createPlayerName(1)" value="Confirm" />
+    <h3 class="player-turn"></h3>
 
-    <input type="text" id="playerName2" placeholder="Player 2"/>
-    <input type="button" onclick="createPlayerName(2)" value="Confirm" />
+    <div class="game-grid">
+        <table>
+            <tr>
+                <td class="cell" id=vakje05 onclick=changeTableCell(0)>X</td>
+                <td class="cell" id=vakje15 onclick=changeTableCell(1)>X</td>
+                <td class="cell" id=vakje25 onclick=changeTableCell(2)>X</td>
+                <td class="cell" id=vakje35 onclick=changeTableCell(3)>X</td>
+                <td class="cell" id=vakje45 onclick=changeTableCell(4)>X</td>
+                <td class="cell" id=vakje55 onclick=changeTableCell(5)>X</td>
+                <td class="cell" id=vakje65 onclick=changeTableCell(6)>X</td>
+            </tr>
+            <tr>
+                <td class="cell" id=vakje04 onclick=changeTableCell(0)>X</td>
+                <td class="cell" id=vakje14 onclick=changeTableCell(1)>X</td>
+                <td class="cell" id=vakje24 onclick=changeTableCell(2)>X</td>
+                <td class="cell" id=vakje34 onclick=changeTableCell(3)>X</td>
+                <td class="cell" id=vakje44 onclick=changeTableCell(4)>X</td>
+                <td class="cell" id=vakje54 onclick=changeTableCell(5)>X</td>
+                <td class="cell" id=vakje64 onclick=changeTableCell(6)>X</td>
+            </tr>
+            <tr>
+                <td class="cell" id=vakje03 onclick=changeTableCell(0)>X</td>
+                <td class="cell" id=vakje13 onclick=changeTableCell(1)>X</td>
+                <td class="cell" id=vakje23 onclick=changeTableCell(2)>X</td>
+                <td class="cell" id=vakje33 onclick=changeTableCell(3)>X</td>
+                <td class="cell" id=vakje43 onclick=changeTableCell(4)>X</td>
+                <td class="cell" id=vakje53 onclick=changeTableCell(5)>X</td>
+                <td class="cell" id=vakje63 onclick=changeTableCell(6)>X</td>
+            </tr>
+            <tr>
+                <td class="cell" id=vakje02 onclick=changeTableCell(0)>X</td>
+                <td class="cell" id=vakje12 onclick=changeTableCell(1)>X</td>
+                <td class="cell" id=vakje22 onclick=changeTableCell(2)>X</td>
+                <td class="cell" id=vakje32 onclick=changeTableCell(3)>X</td>
+                <td class="cell" id=vakje42 onclick=changeTableCell(4)>X</td>
+                <td class="cell" id=vakje52 onclick=changeTableCell(5)>X</td>
+                <td class="cell" id=vakje62 onclick=changeTableCell(6)>X</td>
+            </tr>
+            <tr>
+                <td class="cell" id=vakje01 onclick=changeTableCell(0)>X</td>
+                <td class="cell" id=vakje11 onclick=changeTableCell(1)>X</td>
+                <td class="cell" id=vakje21 onclick=changeTableCell(2)>X</td>
+                <td class="cell" id=vakje31 onclick=changeTableCell(3)>X</td>
+                <td class="cell" id=vakje41 onclick=changeTableCell(4)>X</td>
+                <td class="cell" id=vakje51 onclick=changeTableCell(5)>X</td>
+                <td class="cell" id=vakje61 onclick=changeTableCell(6)>X</td>
+            </tr>
+            <tr>
+                <td class="cell" id=vakje00 onclick=changeTableCell(0)>X</td>
+                <td class="cell" id=vakje10 onclick=changeTableCell(1)>X</td>
+                <td class="cell" id=vakje20 onclick=changeTableCell(2)>X</tdclass="cell">
+                <td class="cell" id=vakje30 onclick=changeTableCell(3)>X</td>
+                <td class="cell" id=vakje40 onclick=changeTableCell(4)>X</td>
+                <td class="cell" id=vakje50 onclick=changeTableCell(5)>X</td>
+                <td class="cell" id=vakje60 onclick=changeTableCell(6)>X</td>
+            </tr>
+        </table>
+    </div>
 
-    <h3 id="playerName1Filled"></h3>
-    <h3 id="playerName2Filled"></h3>
-    <table>
-        <tr>
-            <td id=vakje05 onclick=changeTableCell(0)>X</td>
-            <td id=vakje15 onclick=changeTableCell(1)>X</td>
-            <td id=vakje25 onclick=changeTableCell(2)>X</td>
-            <td id=vakje35 onclick=changeTableCell(3)>X</td>
-            <td id=vakje45 onclick=changeTableCell(4)>X</td>
-            <td id=vakje55 onclick=changeTableCell(5)>X</td>
-            <td id=vakje65 onclick=changeTableCell(6)>X</td>
-        </tr>
-        <tr>
-            <td id=vakje04 onclick=changeTableCell(0)>X</td>
-            <td id=vakje14 onclick=changeTableCell(1)>X</td>
-            <td id=vakje24 onclick=changeTableCell(2)>X</td>
-            <td id=vakje34 onclick=changeTableCell(3)>X</td>
-            <td id=vakje44 onclick=changeTableCell(4)>X</td>
-            <td id=vakje54 onclick=changeTableCell(5)>X</td>
-            <td id=vakje64 onclick=changeTableCell(6)>X</td>
-        </tr>
-        <tr>
-            <td id=vakje03 onclick=changeTableCell(0)>X</td>
-            <td id=vakje13 onclick=changeTableCell(1)>X</td>
-            <td id=vakje23 onclick=changeTableCell(2)>X</td>
-            <td id=vakje33 onclick=changeTableCell(3)>X</td>
-            <td id=vakje43 onclick=changeTableCell(4)>X</td>
-            <td id=vakje53 onclick=changeTableCell(5)>X</td>
-            <td id=vakje63 onclick=changeTableCell(6)>X</td>
-        </tr>
-        <tr>
-            <td id=vakje02 onclick=changeTableCell(0)>X</td>
-            <td id=vakje12 onclick=changeTableCell(1)>X</td>
-            <td id=vakje22 onclick=changeTableCell(2)>X</td>
-            <td id=vakje32 onclick=changeTableCell(3)>X</td>
-            <td id=vakje42 onclick=changeTableCell(4)>X</td>
-            <td id=vakje52 onclick=changeTableCell(5)>X</td>
-            <td id=vakje62 onclick=changeTableCell(6)>X</td>
-        </tr>
-        <tr>
-            <td id=vakje01 onclick=changeTableCell(0)>X</td>
-            <td id=vakje11 onclick=changeTableCell(1)>X</td>
-            <td id=vakje21 onclick=changeTableCell(2)>X</td>
-            <td id=vakje31 onclick=changeTableCell(3)>X</td>
-            <td id=vakje41 onclick=changeTableCell(4)>X</td>
-            <td id=vakje51 onclick=changeTableCell(5)>X</td>
-            <td id=vakje61 onclick=changeTableCell(6)>X</td>
-        </tr>
-        <tr>
-            <td id=vakje00 onclick=changeTableCell(0)>X</td>
-            <td id=vakje10 onclick=changeTableCell(1)>X</td>
-            <td id=vakje20 onclick=changeTableCell(2)>X</td>
-            <td id=vakje30 onclick=changeTableCell(3)>X</td>
-            <td id=vakje40 onclick=changeTableCell(4)>X</td>
-            <td id=vakje50 onclick=changeTableCell(5)>X</td>
-            <td id=vakje60 onclick=changeTableCell(6)>X</td>
-        </tr>
-
-
+    <div class="reset">
         <button class="reload" onclick="window.location.reload();">Retry</button>
+    </div>
+    
+    <script src="app.js"></script>
 </body>
 </html>
