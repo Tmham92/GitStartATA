@@ -90,6 +90,7 @@ function changeColor(e) {
     }
 }
 
+// Checks if 4 cells (arguments) have the same color
 function checkColorMatch(one, two, three, four) {
     return (one === two && one === three && one === four && one !== "white");
 }
